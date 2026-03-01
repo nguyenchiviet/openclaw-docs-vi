@@ -25,13 +25,16 @@
 <body>
   <div id="app"></div>
   <script>
-    // Detect base path from current URL for GitHub Pages compatibility
-    var repoName = location.pathname.split('/')[1] || '';
-    var base = '/' + repoName + '/vi/';
+    // Detect base path for GitHub Pages subdirectory
+    var pathParts = location.pathname.replace(/\/+$/, '').split('/');
+    // Remove 'vi' from the end to get the repo base, then add /vi/
+    var basePath = pathParts.slice(0, -1).join('/') + '/vi/';
+    if (basePath === '/vi/') basePath = './';
 
     window.$docsify = {
       name: 'OpenClaw Docs (VI)',
       repo: 'https://github.com/openclaw/openclaw',
+      basePath: basePath,
       loadSidebar: '_sidebar.md',
       subMaxLevel: 3,
       search: {
@@ -41,7 +44,15 @@
       auto2top: true,
       relativePath: true,
       homepage: 'index.md',
-      notFoundPage: true,
+      nativeEmoji: true,
+      plugins: [
+        // Strip YAML front matter before rendering
+        function(hook) {
+          hook.beforeEach(function(content) {
+            return content.replace(/^---[\s\S]*?---\n*/m, '');
+          });
+        }
+      ]
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
