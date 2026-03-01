@@ -22,6 +22,11 @@
       font-family: 'Fragment Mono', 'Fira Code', monospace;
     }
 
+    /* Hide Tailwind dark-mode images (show only light mode logo) */
+    img[class*="hidden"], [class*="hidden dark:block"] {
+      display: none !important;
+    }
+
     /* --- Mintlify Component Styles --- */
 
     /* Grid layout for Columns / CardGroup */
