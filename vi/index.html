@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>OpenClaw Docs - Tiếng Việt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/assets/pixel-lobster.svg">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
   <style>
     :root {
@@ -14,9 +13,6 @@
     .sidebar-nav > ul > li > a {
       font-weight: bold;
       color: #FF5A36;
-    }
-    .app-name-link img {
-      width: 120px;
     }
     body {
       font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -29,25 +25,23 @@
 <body>
   <div id="app"></div>
   <script>
+    // Detect base path from current URL for GitHub Pages compatibility
+    var repoName = location.pathname.split('/')[1] || '';
+    var base = '/' + repoName + '/vi/';
+
     window.$docsify = {
-      name: '<img src="/assets/pixel-lobster.svg" alt="OpenClaw" width="32"> OpenClaw Docs (VI)',
+      name: 'OpenClaw Docs (VI)',
       repo: 'https://github.com/openclaw/openclaw',
       loadSidebar: '_sidebar.md',
       subMaxLevel: 3,
       search: {
-        placeholder: 'Tim kiem...',
-        noData: 'Khong tim thay!',
-        pathNamespaces: ['/vi']
+        placeholder: 'Tìm kiếm...',
+        noData: 'Không tìm thấy!',
       },
       auto2top: true,
       relativePath: true,
-      basePath: '/vi/',
       homepage: 'index.md',
       notFoundPage: true,
-      pagination: {
-        previousText: 'Trang truoc',
-        nextText: 'Trang tiep theo'
-      }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
@@ -57,6 +51,5 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>
