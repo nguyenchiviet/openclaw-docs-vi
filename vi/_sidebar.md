@@ -1,55 +1,55 @@
-- **Bat dau**
-  - Trang chu
-    - [Index](index.md)
-  - Tong quan
+- **Bắt đầu**
+  - Trang chủ
+    - [Trang chủ](index.md)
+  - Tổng quan
     - [Showcase](start/showcase.md)
-  - Khai niem cot loi
-    - [Features](concepts/features.md)
-  - Buoc dau tien
-    - [Getting Started](start/getting-started.md)
-    - [Onboarding Overview](start/onboarding-overview.md)
-    - [Wizard](start/wizard.md)
+  - Khái niệm cốt lõi
+    - [Tính năng](concepts/features.md)
+  - Bước đầu tiên
+    - [Bắt đầu](start/getting-started.md)
+    - [Tổng quan Onboarding](start/onboarding-overview.md)
+    - [Trình hướng dẫn](start/wizard.md)
     - [Onboarding](start/onboarding.md)
-  - Huong dan
-    - [Openclaw](start/openclaw.md)
-- **Cai dat**
-  - Tong quan cai dat
-    - [Index](install/index.md)
-    - [Installer](install/installer.md)
-  - Phuong phap khac
+  - Hướng dẫn
+    - [OpenClaw](start/openclaw.md)
+- **Cài đặt**
+  - Tổng quan cài đặt
+    - [Cài đặt](install/index.md)
+    - [Trình cài đặt](install/installer.md)
+  - Phương pháp khác
     - [Docker](install/docker.md)
     - [Podman](install/podman.md)
     - [Nix](install/nix.md)
     - [Ansible](install/ansible.md)
     - [Bun](install/bun.md)
-  - Bao tri
-    - [Updating](install/updating.md)
-    - [Migrating](install/migrating.md)
-    - [Uninstall](install/uninstall.md)
-  - Hosting va trien khai
+  - Bảo trì
+    - [Cập nhật](install/updating.md)
+    - [Di chuyển](install/migrating.md)
+    - [Gỡ cài đặt](install/uninstall.md)
+  - Hosting và triển khai
     - [Fly](install/fly.md)
     - [Hetzner](install/hetzner.md)
-    - [Gcp](install/gcp.md)
-    - [Macos Vm](install/macos-vm.md)
+    - [GCP](install/gcp.md)
+    - [macOS VM](install/macos-vm.md)
     - [Exe Dev](install/exe-dev.md)
-  - Nang cao
-    - [Development Channels](install/development-channels.md)
-- **Kenh**
-  - Tong quan
-    - [Index](channels/index.md)
-  - Nen tang nhan tin
-    - [Whatsapp](channels/whatsapp.md)
+  - Nâng cao
+    - [Kênh phát triển](install/development-channels.md)
+- **Kênh**
+  - Tổng quan
+    - [Kênh](channels/index.md)
+  - Nền tảng nhắn tin
+    - [WhatsApp](channels/whatsapp.md)
     - [Telegram](channels/telegram.md)
     - [Discord](channels/discord.md)
-    - [Irc](channels/irc.md)
+    - [IRC](channels/irc.md)
     - [Slack](channels/slack.md)
     - [Feishu](channels/feishu.md)
-    - [Googlechat](channels/googlechat.md)
+    - [Google Chat](channels/googlechat.md)
     - [Mattermost](channels/mattermost.md)
     - [Signal](channels/signal.md)
-    - [Imessage](channels/imessage.md)
-    - [Bluebubbles](channels/bluebubbles.md)
-    - [Msteams](channels/msteams.md)
+    - [iMessage](channels/imessage.md)
+    - [BlueBubbles](channels/bluebubbles.md)
+    - [MS Teams](channels/msteams.md)
     - [Synology Chat](channels/synology-chat.md)
     - [Line](channels/line.md)
     - [Matrix](channels/matrix.md)
@@ -58,285 +58,285 @@
     - [Tlon](channels/tlon.md)
     - [Twitch](channels/twitch.md)
     - [Zalo](channels/zalo.md)
-    - [Zalouser](channels/zalouser.md)
-  - Cau hinh
-    - [Pairing](channels/pairing.md)
-    - [Group Messages](channels/group-messages.md)
-    - [Groups](channels/groups.md)
-    - [Broadcast Groups](channels/broadcast-groups.md)
-    - [Channel Routing](channels/channel-routing.md)
-    - [Location](channels/location.md)
-    - [Troubleshooting](channels/troubleshooting.md)
+    - [Zalo User](channels/zalouser.md)
+  - Cấu hình
+    - [Ghép nối](channels/pairing.md)
+    - [Tin nhắn nhóm](channels/group-messages.md)
+    - [Nhóm](channels/groups.md)
+    - [Nhóm phát sóng](channels/broadcast-groups.md)
+    - [Định tuyến kênh](channels/channel-routing.md)
+    - [Vị trí](channels/location.md)
+    - [Khắc phục sự cố](channels/troubleshooting.md)
 - **Agent**
-  - Co ban
-    - [Architecture](concepts/architecture.md)
+  - Cơ bản
+    - [Kiến trúc](concepts/architecture.md)
     - [Agent](concepts/agent.md)
-    - [Agent Loop](concepts/agent-loop.md)
+    - [Vòng lặp Agent](concepts/agent-loop.md)
     - [System Prompt](concepts/system-prompt.md)
-    - [Context](concepts/context.md)
-    - [Agent Workspace](concepts/agent-workspace.md)
-    - [Oauth](concepts/oauth.md)
-  - Khoi dong
+    - [Ngữ cảnh](concepts/context.md)
+    - [Workspace Agent](concepts/agent-workspace.md)
+    - [OAuth](concepts/oauth.md)
+  - Khởi động
     - [Bootstrapping](start/bootstrapping.md)
-  - Phien va bo nho
-    - [Session](concepts/session.md)
-    - [Sessions](concepts/sessions.md)
-    - [Session Pruning](concepts/session-pruning.md)
-    - [Session Tool](concepts/session-tool.md)
-    - [Memory](concepts/memory.md)
-    - [Compaction](concepts/compaction.md)
-  - Da agent
-    - [Multi Agent](concepts/multi-agent.md)
-    - [Presence](concepts/presence.md)
-  - Tin nhan va phan phoi
-    - [Messages](concepts/messages.md)
+  - Phiên và bộ nhớ
+    - [Phiên](concepts/session.md)
+    - [Quản lý phiên](concepts/sessions.md)
+    - [Cắt tỉa phiên](concepts/session-pruning.md)
+    - [Công cụ phiên](concepts/session-tool.md)
+    - [Bộ nhớ](concepts/memory.md)
+    - [Nén](concepts/compaction.md)
+  - Đa agent
+    - [Đa agent](concepts/multi-agent.md)
+    - [Hiện diện](concepts/presence.md)
+  - Tin nhắn và phân phối
+    - [Tin nhắn](concepts/messages.md)
     - [Streaming](concepts/streaming.md)
-    - [Retry](concepts/retry.md)
-    - [Queue](concepts/queue.md)
-- **Cong cu**
-  - Tong quan
-    - [Index](tools/index.md)
-  - Cong cu tich hop
+    - [Thử lại](concepts/retry.md)
+    - [Hàng đợi](concepts/queue.md)
+- **Công cụ**
+  - Tổng quan
+    - [Công cụ](tools/index.md)
+  - Công cụ tích hợp
     - [Lobster](tools/lobster.md)
-    - [Llm Task](tools/llm-task.md)
+    - [LLM Task](tools/llm-task.md)
     - [Exec](tools/exec.md)
     - [Web](tools/web.md)
     - [Apply Patch](tools/apply-patch.md)
-    - [Elevated](tools/elevated.md)
+    - [Nâng cao](tools/elevated.md)
     - [Thinking](tools/thinking.md)
     - [Reactions](tools/reactions.md)
-  - Trinh duyet
-    - [Browser](tools/browser.md)
-    - [Browser Login](tools/browser-login.md)
+  - Trình duyệt
+    - [Trình duyệt](tools/browser.md)
+    - [Đăng nhập trình duyệt](tools/browser-login.md)
     - [Chrome Extension](tools/chrome-extension.md)
-    - [Browser Linux Troubleshooting](tools/browser-linux-troubleshooting.md)
-  - Agent coordination
+    - [Khắc phục sự cố Linux](tools/browser-linux-troubleshooting.md)
+  - Phối hợp Agent
     - [Agent Send](tools/agent-send.md)
     - [Subagents](tools/subagents.md)
-    - [Acp Agents](tools/acp-agents.md)
-    - [Multi Agent Sandbox Tools](tools/multi-agent-sandbox-tools.md)
+    - [ACP Agents](tools/acp-agents.md)
+    - [Sandbox đa agent](tools/multi-agent-sandbox-tools.md)
   - Skills
-    - [Slash Commands](tools/slash-commands.md)
+    - [Lệnh Slash](tools/slash-commands.md)
     - [Skills](tools/skills.md)
-    - [Skills Config](tools/skills-config.md)
-    - [Clawhub](tools/clawhub.md)
+    - [Cấu hình Skills](tools/skills-config.md)
+    - [ClawHub](tools/clawhub.md)
     - [Plugin](tools/plugin.md)
-  - Tien ich mo rong
-    - [Community](plugins/community.md)
-    - [Voice Call](plugins/voice-call.md)
-    - [Zalouser](plugins/zalouser.md)
-  - Tu dong hoa
+  - Tiện ích mở rộng
+    - [Cộng đồng](plugins/community.md)
+    - [Cuộc gọi thoại](plugins/voice-call.md)
+    - [Zalo User](plugins/zalouser.md)
+  - Tự động hóa
     - [Hooks](automation/hooks.md)
     - [Cron Jobs](automation/cron-jobs.md)
-    - [Cron Vs Heartbeat](automation/cron-vs-heartbeat.md)
-    - [Troubleshooting](automation/troubleshooting.md)
+    - [Cron vs Heartbeat](automation/cron-vs-heartbeat.md)
+    - [Khắc phục sự cố](automation/troubleshooting.md)
     - [Webhook](automation/webhook.md)
-    - [Gmail Pubsub](automation/gmail-pubsub.md)
+    - [Gmail PubSub](automation/gmail-pubsub.md)
     - [Poll](automation/poll.md)
-    - [Auth Monitoring](automation/auth-monitoring.md)
-  - Media and devices
-    - [Index](nodes/index.md)
-    - [Troubleshooting](nodes/troubleshooting.md)
-    - [Images](nodes/images.md)
-    - [Audio](nodes/audio.md)
+    - [Giám sát xác thực](automation/auth-monitoring.md)
+  - Phương tiện và thiết bị
+    - [Node](nodes/index.md)
+    - [Khắc phục sự cố](nodes/troubleshooting.md)
+    - [Hình ảnh](nodes/images.md)
+    - [Âm thanh](nodes/audio.md)
     - [Camera](nodes/camera.md)
     - [Talk](nodes/talk.md)
-    - [Voicewake](nodes/voicewake.md)
-    - [Location Command](nodes/location-command.md)
-- **Mo hinh**
-  - Tong quan
-    - [Index](providers/index.md)
-    - [Models](providers/models.md)
-  - Model concepts
-    - [Models](concepts/models.md)
-  - Cau hinh
-    - [Model Providers](concepts/model-providers.md)
-    - [Model Failover](concepts/model-failover.md)
-  - Nha cung cap
+    - [VoiceWake](nodes/voicewake.md)
+    - [Lệnh vị trí](nodes/location-command.md)
+- **Mô hình**
+  - Tổng quan
+    - [Nhà cung cấp](providers/index.md)
+    - [Mô hình](providers/models.md)
+  - Khái niệm mô hình
+    - [Mô hình](concepts/models.md)
+  - Cấu hình
+    - [Nhà cung cấp mô hình](concepts/model-providers.md)
+    - [Chuyển đổi dự phòng](concepts/model-failover.md)
+  - Nhà cung cấp
     - [Anthropic](providers/anthropic.md)
-    - [Openai](providers/openai.md)
-    - [Openrouter](providers/openrouter.md)
-    - [Litellm](providers/litellm.md)
+    - [OpenAI](providers/openai.md)
+    - [OpenRouter](providers/openrouter.md)
+    - [LiteLLM](providers/litellm.md)
     - [Bedrock](providers/bedrock.md)
-    - [Vercel Ai Gateway](providers/vercel-ai-gateway.md)
+    - [Vercel AI Gateway](providers/vercel-ai-gateway.md)
     - [Moonshot](providers/moonshot.md)
     - [Mistral](providers/mistral.md)
-    - [Minimax](providers/minimax.md)
-    - [Opencode](providers/opencode.md)
-    - [Glm](providers/glm.md)
-    - [Zai](providers/zai.md)
+    - [MiniMax](providers/minimax.md)
+    - [OpenCode](providers/opencode.md)
+    - [GLM](providers/glm.md)
+    - [ZAI](providers/zai.md)
     - [Synthetic](providers/synthetic.md)
     - [Qianfan](providers/qianfan.md)
-- **Nen tang**
-  - Platforms overview
-    - [Index](platforms/index.md)
-    - [Macos](platforms/macos.md)
+- **Nền tảng**
+  - Tổng quan nền tảng
+    - [Nền tảng](platforms/index.md)
+    - [macOS](platforms/macos.md)
     - [Linux](platforms/linux.md)
     - [Windows](platforms/windows.md)
     - [Android](platforms/android.md)
-    - [Ios](platforms/ios.md)
-  - macOS companion app
-    - [Dev Setup](platforms/mac/dev-setup.md)
+    - [iOS](platforms/ios.md)
+  - Ứng dụng macOS
+    - [Cài đặt phát triển](platforms/mac/dev-setup.md)
     - [Menu Bar](platforms/mac/menu-bar.md)
-    - [Voicewake](platforms/mac/voicewake.md)
+    - [VoiceWake](platforms/mac/voicewake.md)
     - [Voice Overlay](platforms/mac/voice-overlay.md)
     - [Webchat](platforms/mac/webchat.md)
     - [Canvas](platforms/mac/canvas.md)
-    - [Child Process](platforms/mac/child-process.md)
-    - [Health](platforms/mac/health.md)
-    - [Icon](platforms/mac/icon.md)
-    - [Logging](platforms/mac/logging.md)
-    - [Permissions](platforms/mac/permissions.md)
-    - [Remote](platforms/mac/remote.md)
-    - [Signing](platforms/mac/signing.md)
-    - [Release](platforms/mac/release.md)
-    - [Bundled Gateway](platforms/mac/bundled-gateway.md)
-    - [Xpc](platforms/mac/xpc.md)
+    - [Tiến trình con](platforms/mac/child-process.md)
+    - [Sức khỏe](platforms/mac/health.md)
+    - [Biểu tượng](platforms/mac/icon.md)
+    - [Nhật ký](platforms/mac/logging.md)
+    - [Quyền](platforms/mac/permissions.md)
+    - [Từ xa](platforms/mac/remote.md)
+    - [Ký](platforms/mac/signing.md)
+    - [Phát hành](platforms/mac/release.md)
+    - [Gateway tích hợp](platforms/mac/bundled-gateway.md)
+    - [XPC](platforms/mac/xpc.md)
     - [Skills](platforms/mac/skills.md)
     - [Peekaboo](platforms/mac/peekaboo.md)
-- **Gateway & Van hanh**
+- **Gateway & Vận hành**
   - Gateway
-    - [Index](gateway/index.md)
-    - [Configuration](gateway/configuration.md)
-    - [Configuration Reference](gateway/configuration-reference.md)
-    - [Configuration Examples](gateway/configuration-examples.md)
-    - [Authentication](gateway/authentication.md)
-    - [Secrets](gateway/secrets.md)
-    - [Secrets Plan Contract](gateway/secrets-plan-contract.md)
-    - [Trusted Proxy Auth](gateway/trusted-proxy-auth.md)
-    - [Health](gateway/health.md)
+    - [Gateway](gateway/index.md)
+    - [Cấu hình](gateway/configuration.md)
+    - [Tham chiếu cấu hình](gateway/configuration-reference.md)
+    - [Ví dụ cấu hình](gateway/configuration-examples.md)
+    - [Xác thực](gateway/authentication.md)
+    - [Bí mật](gateway/secrets.md)
+    - [Hợp đồng Secrets Plan](gateway/secrets-plan-contract.md)
+    - [Xác thực Proxy tin cậy](gateway/trusted-proxy-auth.md)
+    - [Sức khỏe](gateway/health.md)
     - [Heartbeat](gateway/heartbeat.md)
     - [Doctor](gateway/doctor.md)
-    - [Logging](gateway/logging.md)
-    - [Gateway Lock](gateway/gateway-lock.md)
-    - [Background Process](gateway/background-process.md)
-    - [Multiple Gateways](gateway/multiple-gateways.md)
-    - [Troubleshooting](gateway/troubleshooting.md)
-    - [Index](gateway/security/index.md)
+    - [Nhật ký](gateway/logging.md)
+    - [Khóa Gateway](gateway/gateway-lock.md)
+    - [Tiến trình nền](gateway/background-process.md)
+    - [Nhiều Gateway](gateway/multiple-gateways.md)
+    - [Khắc phục sự cố](gateway/troubleshooting.md)
+    - [Bảo mật](gateway/security/index.md)
     - [Sandboxing](gateway/sandboxing.md)
-    - [Sandbox Vs Tool Policy Vs Elevated](gateway/sandbox-vs-tool-policy-vs-elevated.md)
-    - [Protocol](gateway/protocol.md)
-    - [Bridge Protocol](gateway/bridge-protocol.md)
-    - [Openai Http Api](gateway/openai-http-api.md)
-    - [Tools Invoke Http Api](gateway/tools-invoke-http-api.md)
-    - [Cli Backends](gateway/cli-backends.md)
-    - [Local Models](gateway/local-models.md)
-    - [Network Model](gateway/network-model.md)
-    - [Pairing](gateway/pairing.md)
-    - [Discovery](gateway/discovery.md)
+    - [Sandbox vs Tool Policy vs Elevated](gateway/sandbox-vs-tool-policy-vs-elevated.md)
+    - [Giao thức](gateway/protocol.md)
+    - [Giao thức Bridge](gateway/bridge-protocol.md)
+    - [OpenAI HTTP API](gateway/openai-http-api.md)
+    - [Tools Invoke HTTP API](gateway/tools-invoke-http-api.md)
+    - [CLI Backends](gateway/cli-backends.md)
+    - [Mô hình cục bộ](gateway/local-models.md)
+    - [Mô hình mạng](gateway/network-model.md)
+    - [Ghép nối](gateway/pairing.md)
+    - [Khám phá](gateway/discovery.md)
     - [Bonjour](gateway/bonjour.md)
-  - Remote access
-    - [Remote](gateway/remote.md)
-    - [Remote Gateway Readme](gateway/remote-gateway-readme.md)
+  - Truy cập từ xa
+    - [Từ xa](gateway/remote.md)
+    - [Remote Gateway](gateway/remote-gateway-readme.md)
     - [Tailscale](gateway/tailscale.md)
-  - Bao mat
-    - [Formal Verification](security/formal-verification.md)
-  - Web interfaces
-    - [Index](web/index.md)
-    - [Control Ui](web/control-ui.md)
+  - Bảo mật
+    - [Xác minh hình thức](security/formal-verification.md)
+  - Giao diện Web
+    - [Web](web/index.md)
+    - [Control UI](web/control-ui.md)
     - [Dashboard](web/dashboard.md)
     - [Webchat](web/webchat.md)
-    - [Tui](web/tui.md)
-- **Tham khao**
-  - CLI commands
-    - [Index](cli/index.md)
-    - [Acp](cli/acp.md)
-    - [Agent](cli/agent.md)
-    - [Agents](cli/agents.md)
-    - [Approvals](cli/approvals.md)
-    - [Browser](cli/browser.md)
-    - [Channels](cli/channels.md)
-    - [Clawbot](cli/clawbot.md)
-    - [Completion](cli/completion.md)
-    - [Config](cli/config.md)
-    - [Configure](cli/configure.md)
-    - [Cron](cli/cron.md)
-    - [Daemon](cli/daemon.md)
-    - [Dashboard](cli/dashboard.md)
-    - [Devices](cli/devices.md)
-    - [Directory](cli/directory.md)
-    - [Dns](cli/dns.md)
-    - [Docs](cli/docs.md)
-    - [Doctor](cli/doctor.md)
-    - [Gateway](cli/gateway.md)
-    - [Health](cli/health.md)
-    - [Hooks](cli/hooks.md)
-    - [Logs](cli/logs.md)
-    - [Memory](cli/memory.md)
-    - [Message](cli/message.md)
-    - [Models](cli/models.md)
-    - [Node](cli/node.md)
-    - [Nodes](cli/nodes.md)
-    - [Onboard](cli/onboard.md)
-    - [Pairing](cli/pairing.md)
-    - [Plugins](cli/plugins.md)
-    - [Qr](cli/qr.md)
-    - [Reset](cli/reset.md)
-    - [Sandbox](cli/sandbox.md)
-    - [Secrets](cli/secrets.md)
-    - [Security](cli/security.md)
-    - [Sessions](cli/sessions.md)
-    - [Setup](cli/setup.md)
-    - [Skills](cli/skills.md)
-    - [Status](cli/status.md)
-    - [System](cli/system.md)
-    - [Tui](cli/tui.md)
-    - [Uninstall](cli/uninstall.md)
-    - [Update](cli/update.md)
-    - [Voicecall](cli/voicecall.md)
-    - [Webhooks](cli/webhooks.md)
-  - RPC and API
-    - [Rpc](reference/rpc.md)
+    - [TUI](web/tui.md)
+- **Tham khảo**
+  - Lệnh CLI
+    - [CLI](cli/index.md)
+    - [acp](cli/acp.md)
+    - [agent](cli/agent.md)
+    - [agents](cli/agents.md)
+    - [approvals](cli/approvals.md)
+    - [browser](cli/browser.md)
+    - [channels](cli/channels.md)
+    - [clawbot](cli/clawbot.md)
+    - [completion](cli/completion.md)
+    - [config](cli/config.md)
+    - [configure](cli/configure.md)
+    - [cron](cli/cron.md)
+    - [daemon](cli/daemon.md)
+    - [dashboard](cli/dashboard.md)
+    - [devices](cli/devices.md)
+    - [directory](cli/directory.md)
+    - [dns](cli/dns.md)
+    - [docs](cli/docs.md)
+    - [doctor](cli/doctor.md)
+    - [gateway](cli/gateway.md)
+    - [health](cli/health.md)
+    - [hooks](cli/hooks.md)
+    - [logs](cli/logs.md)
+    - [memory](cli/memory.md)
+    - [message](cli/message.md)
+    - [models](cli/models.md)
+    - [node](cli/node.md)
+    - [nodes](cli/nodes.md)
+    - [onboard](cli/onboard.md)
+    - [pairing](cli/pairing.md)
+    - [plugins](cli/plugins.md)
+    - [qr](cli/qr.md)
+    - [reset](cli/reset.md)
+    - [sandbox](cli/sandbox.md)
+    - [secrets](cli/secrets.md)
+    - [security](cli/security.md)
+    - [sessions](cli/sessions.md)
+    - [setup](cli/setup.md)
+    - [skills](cli/skills.md)
+    - [status](cli/status.md)
+    - [system](cli/system.md)
+    - [tui](cli/tui.md)
+    - [uninstall](cli/uninstall.md)
+    - [update](cli/update.md)
+    - [voicecall](cli/voicecall.md)
+    - [webhooks](cli/webhooks.md)
+  - RPC và API
+    - [RPC](reference/rpc.md)
     - [Device Models](reference/device-models.md)
-  - Mau
-    - [Agents.Default](reference/AGENTS.default.md)
-    - [Agents](reference/templates/AGENTS.md)
-    - [Boot](reference/templates/BOOT.md)
-    - [Bootstrap](reference/templates/BOOTSTRAP.md)
-    - [Heartbeat](reference/templates/HEARTBEAT.md)
-    - [Identity](reference/templates/IDENTITY.md)
-    - [Soul](reference/templates/SOUL.md)
-    - [Tools](reference/templates/TOOLS.md)
-    - [User](reference/templates/USER.md)
-  - Technical reference
+  - Mẫu
+    - [AGENTS.default](reference/AGENTS.default.md)
+    - [AGENTS](reference/templates/AGENTS.md)
+    - [BOOT](reference/templates/BOOT.md)
+    - [BOOTSTRAP](reference/templates/BOOTSTRAP.md)
+    - [HEARTBEAT](reference/templates/HEARTBEAT.md)
+    - [IDENTITY](reference/templates/IDENTITY.md)
+    - [SOUL](reference/templates/SOUL.md)
+    - [TOOLS](reference/templates/TOOLS.md)
+    - [USER](reference/templates/USER.md)
+  - Tham chiếu kỹ thuật
     - [Wizard](reference/wizard.md)
-    - [Token Use](reference/token-use.md)
+    - [Sử dụng Token](reference/token-use.md)
     - [Prompt Caching](reference/prompt-caching.md)
-  - Concept internals
-    - [Typebox](concepts/typebox.md)
-    - [Markdown Formatting](concepts/markdown-formatting.md)
-    - [Typing Indicators](concepts/typing-indicators.md)
-    - [Usage Tracking](concepts/usage-tracking.md)
-    - [Timezone](concepts/timezone.md)
-  - Project
-    - [Credits](reference/credits.md)
-  - Release notes
-    - [Releasing](reference/RELEASING.md)
-    - [Test](reference/test.md)
-  - Thu nghiem
-    - [Onboarding Config Protocol](experiments/onboarding-config-protocol.md)
-    - [Memory](experiments/research/memory.md)
-    - [Model Config](experiments/proposals/model-config.md)
-- **Tro giup**
-  - Help
-    - [Index](help/index.md)
-    - [Troubleshooting](help/troubleshooting.md)
-    - [Faq](help/faq.md)
-  - Community
+  - Nội bộ
+    - [TypeBox](concepts/typebox.md)
+    - [Định dạng Markdown](concepts/markdown-formatting.md)
+    - [Chỉ báo đang gõ](concepts/typing-indicators.md)
+    - [Theo dõi sử dụng](concepts/usage-tracking.md)
+    - [Múi giờ](concepts/timezone.md)
+  - Dự án
+    - [Ghi nhận](reference/credits.md)
+  - Ghi chú phát hành
+    - [Phát hành](reference/RELEASING.md)
+    - [Kiểm thử](reference/test.md)
+  - Thử nghiệm
+    - [Giao thức cấu hình Onboarding](experiments/onboarding-config-protocol.md)
+    - [Bộ nhớ](experiments/research/memory.md)
+    - [Cấu hình mô hình](experiments/proposals/model-config.md)
+- **Trợ giúp**
+  - Trợ giúp
+    - [Trợ giúp](help/index.md)
+    - [Khắc phục sự cố](help/troubleshooting.md)
+    - [Câu hỏi thường gặp](help/faq.md)
+  - Cộng đồng
     - [Lore](start/lore.md)
-  - Environment and debugging
-    - [Environment](help/environment.md)
-    - [Debugging](help/debugging.md)
-    - [Testing](help/testing.md)
+  - Môi trường và gỡ lỗi
+    - [Môi trường](help/environment.md)
+    - [Gỡ lỗi](help/debugging.md)
+    - [Kiểm thử](help/testing.md)
     - [Scripts](help/scripts.md)
   - Node runtime
     - [Node](install/node.md)
-  - Compaction internals
-    - [Session Management Compaction](reference/session-management-compaction.md)
-  - Developer setup
-    - [Setup](start/setup.md)
-  - Dong gop
-    - [Ci](ci.md)
-  - Docs meta
-    - [Hubs](start/hubs.md)
-    - [Docs Directory](start/docs-directory.md)
+  - Nội bộ Compaction
+    - [Quản lý phiên Compaction](reference/session-management-compaction.md)
+  - Cài đặt phát triển
+    - [Cài đặt](start/setup.md)
+  - Đóng góp
+    - [CI](ci.md)
+  - Tài liệu
+    - [Trung tâm](start/hubs.md)
+    - [Thư mục tài liệu](start/docs-directory.md)
