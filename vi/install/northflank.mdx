@@ -1,0 +1,59 @@
+---
+title: Triển khai trên Northflank
+x-i18n:
+  source_path: install\northflank.mdx
+  source_hash: a6f89f2737505dce438bc23cf9298e6a6e32e144f1e596b6b00ee5e240be9f6c
+  provider: anthropic
+  model: claude-sonnet-4-20250514
+  generated_at: '2026-02-27T20:08:53.104Z'
+---
+
+Triển khai OpenClaw trên Northflank với mẫu một cú nhấp chuột và hoàn thành thiết lập trong trình duyệt của bạn.
+Đây là con đường "không cần terminal trên máy chủ" dễ nhất: Northflank chạy Gateway cho bạn,
+và bạn cấu hình mọi thứ thông qua `/setup` trình hướng dẫn web.
+
+## Cách bắt đầu
+
+1. Nhấp vào [Deploy OpenClaw](https://northflank.com/stacks/deploy-openclaw) để mở mẫu.
+2. Tạo một [tài khoản trên Northflank](https://app.northflank.com/signup) nếu bạn chưa có.
+3. Nhấp vào **Deploy OpenClaw now**.
+4. Đặt biến môi trường bắt buộc: `SETUP_PASSWORD`.
+5. Nhấp vào **Deploy stack** để xây dựng và chạy mẫu OpenClaw.
+6. Chờ triển khai hoàn thành, sau đó nhấp vào **View resources**.
+7. Mở dịch vụ OpenClaw.
+8. Mở URL OpenClaw công khai và hoàn thành thiết lập tại `/setup`.
+9. Mở Control UI tại `/openclaw`.
+
+## Những gì bạn nhận được
+
+- Gateway OpenClaw được lưu trữ + Control UI
+- Trình hướng dẫn thiết lập web tại `/setup` (không cần lệnh terminal)
+- Lưu trữ liên tục thông qua Northflank Volume (`/data`) để cấu hình/thông tin xác thực/không gian làm việc tồn tại qua các lần triển khai lại
+
+## Luồng thiết lập
+
+1. Truy cập `https://<your-northflank-domain>/setup` và nhập `SETUP_PASSWORD` của bạn.
+2. Chọn mô hình/nhà cung cấp xác thực và dán khóa của bạn.
+3. (Tùy chọn) Thêm mã thông báo Telegram/Discord/Slack.
+4. Nhấp vào **Run setup**.
+5. Mở Control UI tại `https://<your-northflank-domain>/openclaw`
+
+Nếu tin nhắn riêng Telegram được đặt thành ghép nối, trình hướng dẫn thiết lập có thể phê duyệt mã ghép nối.
+
+## Nhận mã thông báo trò chuyện
+
+### Mã thông báo bot Telegram
+
+1. Gửi tin nhắn `@BotFather` trong Telegram
+2. Chạy `/newbot`
+3. Sao chép mã thông báo (trông giống như `123456789:AA...`)
+4. Dán nó vào `/setup`
+
+### Mã thông báo bot Discord
+
+1. Đi tới [https://discord.com/developers/applications](https://discord.com/developers/applications)
+2. **New Application** → chọn một tên
+3. **Bot** → **Add Bot**
+4. **Enable MESSAGE CONTENT INTENT** dưới Bot → Privileged Gateway Intents (bắt buộc hoặc bot sẽ gặp sự cố khi khởi động)
+5. Sao chép **Bot Token** và dán vào `/setup`
+6. Mời bot vào máy chủ của bạn (OAuth2 URL Generator; scopes: `bot`, `applications.commands`)

@@ -1,0 +1,155 @@
+---
+title: Triển khai trên Render
+x-i18n:
+  source_path: install\render.mdx
+  source_hash: 7ad9d0d78812feb1844e9897fe6590372983ec3fc047ebe353638875c7c7e42b
+  provider: anthropic
+  model: claude-sonnet-4-20250514
+  generated_at: '2026-02-27T20:09:46.028Z'
+---
+
+Triển khai OpenClaw trên Render bằng Infrastructure as Code. `render.yaml` Blueprint đi kèm định nghĩa toàn bộ stack của bạn một cách khai báo, dịch vụ, đĩa, biến môi trường, để bạn có thể triển khai chỉ bằng một cú nhấp chuột và quản lý phiên bản cơ sở hạ tầng của bạn cùng với mã của bạn.
+
+## Điều kiện tiên quyết
+
+- Một [tài khoản Render](https://render.com) (có sẵn bản miễn phí)
+- Một khóa API từ [nhà cung cấp mô hình](/providers) ưa thích của bạn
+## Triển khai với Render Blueprint
+
+[Triển khai lên Render](https://render.com/deploy?repo=https://github.com/openclaw/openclaw)
+
+Nhấp vào liên kết này sẽ:
+
+1. Tạo một dịch vụ Render mới từ `render.yaml` Blueprint ở gốc của kho lưu trữ này.
+2. Nhắc bạn đặt `SETUP_PASSWORD`
+3. Xây dựng hình ảnh Docker và triển khai
+
+Sau khi triển khai, URL dịch vụ của bạn tuân theo mẫu `https://<service-name>.onrender.com`.
+## Hiểu về Blueprint
+
+Render Blueprints là các tệp YAML xác định cơ sở hạ tầng của bạn. `render.yaml` trong kho lưu trữ này cấu hình mọi thứ cần thiết để chạy OpenClaw:
+
+```yaml
+services:
+  - type: web
+    name: openclaw
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: SETUP_PASSWORD
+        sync: false # prompts during deploy
+      - key: OPENCLAW_STATE_DIR
+        value: /data/.openclaw
+      - key: OPENCLAW_WORKSPACE_DIR
+        value: /data/workspace
+      - key: OPENCLAW_GATEWAY_TOKEN
+        generateValue: true # auto-generates a secure token
+    disk:
+      name: openclaw-data
+      mountPath: /data
+      sizeGB: 1
+```
+
+Key Blueprint features used:
+
+| Feature               | Purpose                                                    |
+| --------------------- | ---------------------------------------------------------- |
+| `runtime: docker`     | Builds from the repo's Dockerfile                          |
+| `healthCheckPath`     | Render monitors `/health` and restarts unhealthy instances |
+| `sync: false`         | Prompts for value during deploy (secrets)                  |
+| `generateValue: true` | Auto-generates a cryptographically secure value            |
+| `disk`                | Bộ nhớ lưu trữ liên tục tồn tại qua các lần triển khai lại                 |
+## Chọn gói
+
+| Gói | Tắt sau | Đĩa | Phù hợp nhất cho |
+| --------- | ----------------- | ------------- | ----------------------------- |
+| Free | Sau 15 phút không hoạt động | Không có | Kiểm tra, bản demo |
+| Starter | Không bao giờ | 1GB+ | Sử dụng cá nhân, nhóm nhỏ |
+| Standard+ | Không bao giờ | 1GB+ | Sản xuất, nhiều kênh |
+
+Blueprint mặc định là `starter`. Để sử dụng gói miễn phí, thay đổi `plan: free` trong `render.yaml` của fork của bạn
+(nhưng lưu ý: không có đĩa lưu trữ liên tục có nghĩa là cấu hình sẽ được đặt lại khi triển khai).
+## Sau khi triển khai
+
+### Hoàn thành trình hướng dẫn thiết lập
+
+1. Điều hướng đến `https://<your-service>.onrender.com/setup`
+2. Nhập `SETUP_PASSWORD` của bạn
+3. Chọn nhà cung cấp mô hình và dán khóa API của bạn
+4. Tùy chọn cấu hình các kênh nhắn tin (Telegram, Discord, Slack)
+5. Nhấp vào **Chạy thiết lập**
+
+### Truy cập Giao diện Điều khiển
+
+Bảng điều khiển web có sẵn tại `https://<your-service>.onrender.com/openclaw`.
+## Các tính năng Dashboard của Render
+
+### Nhật ký
+
+Xem nhật ký thời gian thực trong **Dashboard → dịch vụ của bạn → Logs**. Lọc theo:
+
+- Build logs (tạo Docker image)
+- Deploy logs (khởi động dịch vụ)
+- Runtime logs (đầu ra ứng dụng)
+
+### Truy cập shell
+
+Để gỡ lỗi, mở phiên shell qua **Dashboard → dịch vụ của bạn → Shell**. Đĩa lưu trữ liên tục được gắn tại `/data`.
+
+### Biến môi trường
+
+Sửa đổi biến trong **Dashboard → dịch vụ của bạn → Environment**. Các thay đổi sẽ kích hoạt triển khai lại tự động.
+
+### Triển khai tự động
+
+Nếu bạn sử dụng kho lưu trữ OpenClaw gốc, Render sẽ không tự động triển khai OpenClaw của bạn. Để cập nhật, hãy chạy đồng bộ hóa Blueprint thủ công từ bảng điều khiển.
+## Tên miền tùy chỉnh
+
+1. Đi tới **Dashboard → dịch vụ của bạn → Settings → Custom Domains**
+2. Thêm tên miền của bạn
+3. Cấu hình DNS theo hướng dẫn (CNAME tới `*.onrender.com`)
+4. Render cấp phát chứng chỉ TLS tự động
+## Mở rộng quy mô
+
+Render hỗ trợ mở rộng quy mô theo chiều ngang và chiều dọc:
+
+- **Chiều dọc**: Thay đổi gói để có thêm CPU/RAM
+- **Chiều ngang**: Tăng số lượng instance (gói Standard trở lên)
+
+Đối với OpenClaw, mở rộng quy mô theo chiều dọc thường là đủ. Mở rộng quy mô theo chiều ngang yêu cầu sticky sessions hoặc quản lý trạng thái bên ngoài.
+## Sao lưu và di chuyển
+
+Xuất cấu hình và không gian làm việc của bạn bất kỳ lúc nào:
+
+```
+https://<your-service>.onrender.com/setup/export
+```
+
+Điều này tải xuống một bản sao lưu di động mà bạn có thể khôi phục trên bất kỳ máy chủ OpenClaw nào.
+## Khắc phục sự cố
+
+### Dịch vụ không khởi động
+
+Kiểm tra nhật ký triển khai trong Bảng điều khiển Render. Các vấn đề phổ biến:
+
+- `SETUP_PASSWORD` bị thiếu — Blueprint yêu cầu điều này, nhưng hãy xác minh rằng nó đã được đặt
+- Không khớp cổng — đảm bảo `PORT=8080` khớp với cổng được công khai trong Dockerfile
+
+### Khởi động lạnh chậm (tầng miễn phí)
+
+Các dịch vụ tầng miễn phí sẽ tắt sau 15 phút không hoạt động. Yêu cầu đầu tiên sau khi tắt mất vài giây trong khi container khởi động. Nâng cấp lên gói Starter để luôn bật.
+
+### Mất dữ liệu sau khi triển khai lại
+
+Điều này xảy ra trên tầng miễn phí (không có đĩa lưu trữ liên tục). Nâng cấp lên gói trả phí, hoặc
+thường xuyên xuất cấu hình của bạn qua `/setup/export`.
+
+### Lỗi kiểm tra sức khỏe
+
+Render mong đợi phản hồi 200 từ `/health` trong vòng 30 giây. Nếu bản dựng thành công nhưng triển khai thất bại, dịch vụ có thể mất quá nhiều thời gian để khởi động. Kiểm tra:
+
+- Nhật ký bản dựng để tìm lỗi
+- Liệu container có chạy cục bộ với `docker build && docker run`

@@ -1,0 +1,98 @@
+---
+title: Triển khai trên Railway
+x-i18n:
+  source_path: install\railway.mdx
+  source_hash: 749d06cc1016b7bcc977f0f5c962e2ad6d1856b2788b08f3671a9a103c422e26
+  provider: anthropic
+  model: claude-sonnet-4-20250514
+  generated_at: '2026-02-27T20:09:38.516Z'
+---
+
+Triển khai OpenClaw trên Railway với mẫu một cú nhấp chuột và hoàn thành thiết lập trong trình duyệt của bạn.
+Đây là con đường "không cần terminal trên máy chủ" dễ nhất: Railway chạy Gateway cho bạn,
+và bạn cấu hình mọi thứ thông qua trình hướng dẫn web `/setup`.
+## Danh sách kiểm tra nhanh (người dùng mới)
+
+1. Nhấp vào **Deploy on Railway** (bên dưới).
+2. Thêm một **Volume** được gắn tại `/data`.
+3. Đặt các **Variables** bắt buộc (ít nhất `SETUP_PASSWORD`).
+4. Bật **HTTP Proxy** trên cổng `8080`.
+5. Mở `https://<your-railway-domain>/setup` và hoàn thành trình hướng dẫn.
+## Triển khai một cú nhấp chuột
+
+<a href="https://railway.com/deploy/clawdbot-railway-template" target="_blank" rel="noreferrer">
+  Triển khai trên Railway
+</a>
+
+Sau khi triển khai, tìm URL công khai của bạn trong **Railway → dịch vụ của bạn → Settings → Domains**.
+
+Railway sẽ:
+
+- cấp cho bạn một tên miền được tạo (thường là `https://<something>.up.railway.app`), hoặc
+- sử dụng tên miền tùy chỉnh của bạn nếu bạn đã đính kèm một.
+
+Sau đó mở:
+
+- `https://<your-railway-domain>/setup` — trình hướng dẫn thiết lập (được bảo vệ bằng mật khẩu)
+- `https://<your-railway-domain>/openclaw` — Giao diện điều khiển
+## Những gì bạn nhận được
+
+- Gateway được lưu trữ + Giao diện điều khiển
+- Trình hướng dẫn thiết lập web tại `/setup` (không cần lệnh terminal)
+- Lưu trữ liên tục thông qua Railway Volume (`/data`) để cấu hình/thông tin xác thực/không gian làm việc tồn tại qua các lần triển khai lại
+- Xuất bản sao lưu tại `/setup/export` để di chuyển khỏi Railway sau này
+## Cài đặt Railway bắt buộc
+
+### Mạng công cộng
+
+Bật **HTTP Proxy** cho dịch vụ.
+
+- Cổng: `8080`
+
+### Volume (bắt buộc)
+
+Gắn một volume tại:
+
+- `/data`
+
+### Biến
+
+Đặt các biến này trên dịch vụ:
+
+- `SETUP_PASSWORD` (bắt buộc)
+- `PORT=8080` (bắt buộc — phải khớp với cổng trong Mạng công cộng)
+- `OPENCLAW_STATE_DIR=/data/.openclaw` (được khuyến nghị)
+- `OPENCLAW_WORKSPACE_DIR=/data/workspace` (được khuyến nghị)
+- `OPENCLAW_GATEWAY_TOKEN` (được khuyến nghị; coi như một bí mật quản trị viên)
+## Luồng thiết lập
+
+1. Truy cập `https://<your-railway-domain>/setup` và nhập `SETUP_PASSWORD` của bạn.
+2. Chọn một mô hình/nhà cung cấp xác thực và dán khóa của bạn.
+3. (Tùy chọn) Thêm các token Telegram/Discord/Slack.
+4. Nhấp vào **Chạy thiết lập**.
+
+Nếu tin nhắn riêng Telegram được đặt thành ghép nối, trình hướng dẫn thiết lập có thể phê duyệt mã ghép nối.
+## Bắt đầu nhanh với token trò chuyện
+
+### Token bot Telegram
+
+1. Gửi tin nhắn cho `@BotFather` trên Telegram
+2. Chạy `/newbot`
+3. Sao chép token (trông giống như `123456789:AA...`)
+4. Dán nó vào `/setup`
+
+### Token bot Discord
+
+1. Truy cập [https://discord.com/developers/applications](https://discord.com/developers/applications)
+2. **New Application** → chọn một tên
+3. **Bot** → **Add Bot**
+4. **Enable MESSAGE CONTENT INTENT** dưới Bot → Privileged Gateway Intents (bắt buộc hoặc bot sẽ gặp sự cố khi khởi động)
+5. Sao chép **Bot Token** và dán vào `/setup`
+6. Mời bot vào máy chủ của bạn (OAuth2 URL Generator; scopes: `bot`, `applications.commands`)
+## Sao lưu & di chuyển
+
+Tải xuống bản sao lưu tại:
+
+- `https://<your-railway-domain>/setup/export`
+
+Điều này xuất trạng thái OpenClaw + không gian làm việc của bạn để bạn có thể di chuyển sang máy chủ khác mà không mất cấu hình hoặc bộ nhớ.
