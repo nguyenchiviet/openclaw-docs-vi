@@ -20,21 +20,178 @@
     .markdown-section code {
       font-family: 'Fragment Mono', 'Fira Code', monospace;
     }
+
+    /* --- Mintlify Component Styles --- */
+
+    /* Grid layout for Columns / CardGroup */
+    .grid-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    /* Card */
+    .card-item {
+      display: block;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .card-item:hover {
+      border-color: #FF5A36;
+      box-shadow: 0 2px 8px rgba(255,90,54,0.12);
+      text-decoration: none;
+      color: inherit;
+    }
+    .card-item .card-title {
+      font-weight: 600;
+      font-size: 1em;
+      margin-bottom: 6px;
+      color: #FF5A36;
+    }
+    .card-item .card-body {
+      font-size: 0.9em;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Steps */
+    .steps-container {
+      border-left: 3px solid #FF5A36;
+      padding-left: 20px;
+      margin: 16px 0;
+    }
+    .step-item {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .step-item::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: -32px;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #FF5A36;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .steps-container {
+      counter-reset: step-counter;
+    }
+    .step-title {
+      font-weight: 600;
+      font-size: 1em;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Tabs */
+    .tabs-wrap {
+      margin: 16px 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .tab-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .tab-item:last-child {
+      border-bottom: none;
+    }
+    .tab-label {
+      font-weight: 600;
+      font-size: 0.95em;
+      color: #FF5A36;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Accordion */
+    details {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 8px 0;
+    }
+    details summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: #333;
+    }
+    details[open] summary {
+      margin-bottom: 8px;
+      color: #FF5A36;
+    }
+
+    /* Callouts: Note, Warning, Info, Tip, Check */
+    .callout {
+      border-left: 4px solid;
+      border-radius: 4px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: 0.95em;
+    }
+    .callout-note {
+      border-color: #3b82f6;
+      background: #eff6ff;
+    }
+    .callout-warning {
+      border-color: #f59e0b;
+      background: #fffbeb;
+    }
+    .callout-info {
+      border-color: #6366f1;
+      background: #eef2ff;
+    }
+    .callout-tip {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+    .callout-check {
+      border-color: #22c55e;
+      background: #f0fdf4;
+    }
+
+    /* Frame */
+    .doc-frame {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 16px 0;
+      text-align: center;
+    }
+    .doc-frame img {
+      max-width: 100%;
+    }
+
+    /* Tooltip */
+    .doc-tooltip {
+      text-decoration: underline dotted;
+      cursor: help;
+    }
   </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
-    // Detect base path for GitHub Pages subdirectory
-    var pathParts = location.pathname.replace(/\/+$/, '').split('/');
-    // Remove 'vi' from the end to get the repo base, then add /vi/
-    var basePath = pathParts.slice(0, -1).join('/') + '/vi/';
-    if (basePath === '/vi/') basePath = './';
+    // Detect repo base path for GitHub Pages
+    var repoBase = '/' + (location.pathname.split('/')[1] || '');
 
     window.$docsify = {
       name: 'OpenClaw Docs (VI)',
       repo: 'https://github.com/openclaw/openclaw',
-      basePath: basePath,
       loadSidebar: '_sidebar.md',
       subMaxLevel: 3,
       search: {
@@ -46,10 +203,84 @@
       homepage: 'index.md',
       nativeEmoji: true,
       plugins: [
-        // Strip YAML front matter before rendering
         function(hook) {
           hook.beforeEach(function(content) {
-            return content.replace(/^---[\s\S]*?---\n*/m, '');
+            // 1. Strip YAML front matter
+            content = content.replace(/^---[\s\S]*?---\n*/m, '');
+
+            // 2. Fix absolute image paths: src="/assets/..." → src="../assets/..."
+            content = content.replace(/src="\/assets\//g, 'src="../assets/');
+            content = content.replace(/src="\/images\//g, 'src="../images/');
+
+            // 3. Fix absolute markdown links: [text](/path) → [text](path)
+            content = content.replace(/\]\(\//g, '](');
+
+            // 4. Transform Mintlify components
+
+            // Columns / CardGroup → grid
+            content = content.replace(/<Columns>/g, '<div class="grid-cols">');
+            content = content.replace(/<\/Columns>/g, '</div>');
+            content = content.replace(/<CardGroup[^>]*>/g, '<div class="grid-cols">');
+            content = content.replace(/<\/CardGroup>/g, '</div>');
+
+            // Card → styled card
+            content = content.replace(/<Card\s+([^>]*)>([\s\S]*?)<\/Card>/g, function(m, attrs, inner) {
+              var title = (attrs.match(/title="([^"]*)"/) || [])[1] || '';
+              var href = (attrs.match(/href="([^"]*)"/) || [])[1] || '';
+              // Fix absolute href
+              if (href.startsWith('/')) href = href.slice(1);
+              var tag = href ? 'a' : 'div';
+              var hrefAttr = href ? ' href="#/' + href + '"' : '';
+              return '<' + tag + ' class="card-item"' + hrefAttr + '>' +
+                '<div class="card-title">' + title + '</div>' +
+                '<div class="card-body">' + inner.trim() + '</div>' +
+                '</' + tag + '>';
+            });
+
+            // Steps / Step
+            content = content.replace(/<Steps>/g, '<div class="steps-container">');
+            content = content.replace(/<\/Steps>/g, '</div>');
+            content = content.replace(/<Step\s+title="([^"]*)">/g,
+              '<div class="step-item"><span class="step-title">$1</span>\n');
+            content = content.replace(/<\/Step>/g, '</div>');
+
+            // Tabs / Tab
+            content = content.replace(/<Tabs>/g, '<div class="tabs-wrap">');
+            content = content.replace(/<\/Tabs>/g, '</div>');
+            content = content.replace(/<Tab\s+title="([^"]*)">/g,
+              '<div class="tab-item"><span class="tab-label">$1</span>\n');
+            content = content.replace(/<\/Tab>/g, '</div>');
+
+            // AccordionGroup / Accordion
+            content = content.replace(/<AccordionGroup>/g, '<div class="accordion-group">');
+            content = content.replace(/<\/AccordionGroup>/g, '</div>');
+            content = content.replace(/<Accordion\s+title="([^"]*)">/g,
+              '<details><summary>$1</summary>\n');
+            content = content.replace(/<\/Accordion>/g, '</details>');
+
+            // Callouts
+            content = content.replace(/<Note>/g, '<div class="callout callout-note">\n');
+            content = content.replace(/<\/Note>/g, '\n</div>');
+            content = content.replace(/<Warning>/g, '<div class="callout callout-warning">\n');
+            content = content.replace(/<\/Warning>/g, '\n</div>');
+            content = content.replace(/<Info>/g, '<div class="callout callout-info">\n');
+            content = content.replace(/<\/Info>/g, '\n</div>');
+            content = content.replace(/<Tip>/g, '<div class="callout callout-tip">\n');
+            content = content.replace(/<\/Tip>/g, '\n</div>');
+            content = content.replace(/<Check>/g, '<div class="callout callout-check">\n');
+            content = content.replace(/<\/Check>/g, '\n</div>');
+
+            // Frame
+            content = content.replace(/<Frame>/g, '<div class="doc-frame">');
+            content = content.replace(/<\/Frame>/g, '</div>');
+
+            // Tooltip
+            content = content.replace(/<Tooltip\s+([^>]*)>([\s\S]*?)<\/Tooltip>/g, function(m, attrs, inner) {
+              var tip = (attrs.match(/tip="([^"]*)"/) || [])[1] || '';
+              return '<span class="doc-tooltip" title="' + tip + '">' + inner + '</span>';
+            });
+
+            return content;
           });
         }
       ]
